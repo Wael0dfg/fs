@@ -1,25 +1,17 @@
-# Maintainer: Wael0dfg <iratenwaelx@gmail.com>
-
 pkgname='fs'
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="a Simple CLI tool to show file and directory sizes"
+pkgdesc="a Simple CLI tool to show file and directory sizes (Python script)"
 arch=('any')
-url="https://github.com/Wael0dfg/fs.git"
+url="https://github.com/Wael0dfg/fs"
 license=('custom')
 depends=('python')
 
 install=
 changelog=
-source=('fs::git://github.com/Wael0dfg/fs.git')
-sha256sums=('skip')
-
-build() {
-	cd "$pkgname-$pkgver"
-	make
-}
+source=("https://raw.githubusercontent.com/Wael0dfg/fs/v$pkgver/fs.py")
+sha256sums=('SKIP')
 
 package() {
-	cd "$pkgname-$pkgver"
-	install Dm755 ./fs "$pkgdir/usr/bin/fs"
+	install -Dm755 "$srcdir/fs.py" "$pkgdir/usr/bin/fs"
 }
